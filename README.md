@@ -1,3 +1,14 @@
+# Get started
+
+### Add encryption key
+
+```bash
+docker-compose exec kibana kibana-keystore add xpack.encryptedSavedObjects.encryptionKey
+docker-compose exec kibana kibana-keystore create
+```
+
+Add 32-character encryption key and restart
+
 # Elastic stack (ELK) on Docker
 
 [![Elastic Stack version](https://img.shields.io/badge/Elastic%20Stack-8.4.1-00bfb3?style=flat&logo=elastic-stack)](https://www.elastic.co/blog/category/releases)
