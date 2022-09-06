@@ -1,6 +1,6 @@
 # Get started
 
-### Add encryption key
+## Add encryption key
 
 ```bash
 docker-compose exec kibana kibana-keystore add xpack.encryptedSavedObjects.encryptionKey
