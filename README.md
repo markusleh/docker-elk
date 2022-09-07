@@ -5,14 +5,24 @@
 [![Build Status](https://github.com/deviantony/docker-elk/workflows/CI/badge.svg?branch=main)](https://github.com/deviantony/docker-elk/actions?query=workflow%3ACI+branch%3Amain)
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Get Started - Add encryption key
+## Get Started 
+
+Install docker-compose
 
 ```bash
-docker-compose exec kibana kibana-keystore add xpack.encryptedSavedObjects.encryptionKey
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+
+Encryption key
+```bash
 docker-compose exec kibana kibana-keystore create
+docker-compose exec kibana kibana-keystore add xpack.encryptedSavedObjects.encryptionKey
 ```
 
 Add 32-character encryption key and restart
+
 
 ## Template 
 
