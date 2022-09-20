@@ -191,3 +191,34 @@ function ensure_role {
 
 	return $result
 }
+function create_api_key {
+        local data_file=$1
+
+        local elasticsearch_host="${ELASTICSEARCH_HOST:-elasticsearch}"
+
+        local -a args=( '-s' '-D-' '-m15' '-w' '%{http_code}'
+                "http://${elasticsearch_host}:9200/_security/api_key"
+                '-X' 'POST'
+                '-H' 'Content-Type: application/json'
+                '-d' "@${data_file}"
+                )
+
+        if [[ -n "${ELASTIC_PASSWORD:-}" ]]; then
+                args+=( '-u' "elastic:${ELASTIC_PASSWORD}" )
+        fi
+
+        local -i result=1
+        local output
+
+        output="$(curl "${args[@]}")"
+        if [[ "${output: -3}" -eq 200 ]]; then
+                result=0
+        fi
+
+        if ((result)); then
+                echo -e "\n${output::-3}\n"
+        fi
+	# TODO: store output
+
+        return $result
+}
