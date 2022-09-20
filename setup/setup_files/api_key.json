@@ -1,0 +1,24 @@
+{
+  "name": "my-api-key",
+  "expiration": "1d",
+  "role_descriptors": {
+    "superuser": {
+      "cluster": ["all"],
+      "indices": [
+        {
+          "names": ["my-example-movies"],
+          "privileges": ["read"],
+          "allow_restricted_indices": false
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "application": "my-application",
+    "environment": {
+       "level": 1,
+       "trusted": true,
+       "tags": ["dev", "staging"]
+    }
+  }
+}
